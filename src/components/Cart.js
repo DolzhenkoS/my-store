@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Cart({ cartItems }) {
+function Cart({ cartItems, removeFromCart }) {
     return (
         <div className="cart">
             <h2>Корзина</h2>
@@ -8,13 +8,19 @@ function Cart({ cartItems }) {
                 cartItems.length === 0 ? (
                     <p>Корзина пуста</p>
                 ) : (
-                    cartItems.map(
-                        (item, index) => (
-                            <div key={index}>
-                                {item.name} - {item.price} руб
-                            </div>
-                        )
-                    )
+                    <ul>
+                        {
+                            cartItems.map(
+                                (item, index) => (
+                                    <li key={index}>
+                                        {item.name} - {item.price}
+                                        <button onClick={() => removeFromCart(item)}>Удалить</button>
+                                    </li>
+                                )
+                            )
+                        }
+
+                    </ul>
                 )
             }
 
