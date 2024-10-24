@@ -3,6 +3,8 @@ import './App.css';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -49,19 +51,19 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Онлайн магазин</h1>
+      <Header></Header>
       {
         !isCheckingOut ? (
           <>
             <ProductList products={products} addToCart={addToCart}></ProductList>
             <Cart cartItems={cart} removeFromCart={removeFromCart}></Cart>
-            <button onClick={() =>  setIsCheckingOut(true) }>Оформить заказ</button>
+            <button onClick={() => setIsCheckingOut(true)}>Оформить заказ</button>
           </>
         ) : (
           <Checkout cartItems={cart} onCheckOut={handleCheckout}></Checkout>
         )
       }
-
+      <Footer></Footer>
     </div>
   );
 }

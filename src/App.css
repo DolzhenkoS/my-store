@@ -51,6 +51,11 @@ h1 {
   margin: 0 0 15px;
 }
 
+.product img {
+  width: 100%;
+  height: auto;
+}
+
 button{
   background-color: #28a745;
   color: white;
@@ -87,4 +92,15 @@ button:hover{
 
 .checkout div{
   margin-bottom: 10px;
+}
+
+header{
+  padding: 10px;
+  background-color: #f8f9fa;
+}
+
+footer{
+  padding: 10px;
+  background-color: #f8f9fa;
+  margin-top: 20px;
 }
