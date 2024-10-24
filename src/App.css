@@ -73,3 +73,18 @@ button:hover{
 .cart h2{
   color: #333;
 }
+
+.checkout{
+  margin-top: 20px;
+  border-top: 2px solid #000;
+  padding-top: 10px;
+}
+
+.checkout form{
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout div{
+  margin-bottom: 10px;
+}

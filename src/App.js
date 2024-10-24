@@ -2,18 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 
 function App() {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
 
-  // const products = [
-  //   {id:1,name:'Апельсины',price: 10.99},
-  //   {id:2,name:'Мандарины',price: 12.99},
-  //   {id:3,name:'Яблоки',price: 20.99},
-  //   {id:4,name:'Огурцы',price: 35.99},
-  //   {id:5,name:'Помидоры',price: 40.99},
-  // ];
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -45,11 +40,28 @@ function App() {
     ));
   }
 
+  function handleCheckout() {
+    //Очистка корзины после оформления заказа
+    setCart([]);
+    setIsCheckingOut(false);
+
+  }
+
   return (
     <div className="App">
       <h1>Онлайн магазин</h1>
-      <ProductList products={products} addToCart={addToCart}></ProductList>
-      <Cart cartItems={cart} removeFromCart={removeFromCart}></Cart>
+      {
+        !isCheckingOut ? (
+          <>
+            <ProductList products={products} addToCart={addToCart}></ProductList>
+            <Cart cartItems={cart} removeFromCart={removeFromCart}></Cart>
+            <button onClick={() =>  setIsCheckingOut(true) }>Оформить заказ</button>
+          </>
+        ) : (
+          <Checkout cartItems={cart} onCheckOut={handleCheckout}></Checkout>
+        )
+      }
+
     </div>
   );
 }
