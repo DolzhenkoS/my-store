@@ -99,7 +99,7 @@ function Order({ user, onDelete }) {
 
             <h2>Всего количество {sumQ} шт</h2>
             <h2>На сумму {sumS} руб</h2>
-            <button>Оплатить заказ</button>
+            <button onClick={alert('Заказ оплачен')}>Оплатить заказ</button>
         </div>
 
     );
