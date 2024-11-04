@@ -3,7 +3,7 @@ import React from 'react';
 function Header(){
 return (
     <header>
-        <h1>Магазин</h1>
+        <h2>Розы, осень 2025</h2>
     </header>
 )
 }

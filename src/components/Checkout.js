@@ -5,11 +5,11 @@ function Checkout({ cartItems, onCheckOut }) {
     const [address, setAddress] = useState('');
 
     function handleSubmit(e) {
-        e.preventDefault();
-        if (!name || !address) {
-            alert('Заполните все поля !');
-            return;
-        }
+        // e.preventDefault();
+        // if (!name || !address) {
+        //     alert('Заполните все поля !');
+        //     return;
+        // }
 
         //Здесь будет отправка данных на сервер
         onCheckOut();
