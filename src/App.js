@@ -183,7 +183,7 @@ function App() {
 
   return (
     <div className="App">
-      {user && <div>{user.first_name}+" "+{user.last_name} !</div>}
+      {user && <div>Заказчик: {user.first_name} {user.last_name}</div>}
       {/* <Header></Header> */}
 
       {(currentPage === LIST_PAGE) ? (
