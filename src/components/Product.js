@@ -6,10 +6,7 @@ function Product({ product, addToCart, openDetail, selectedProduct }) {
     const imgUrl = "https://ratsberry.sytes.net/api/img/img_" + product.article + ".jpg";
 
     function onClick(e) {
-        if (product === selectedProduct) {
-
-            openDetail(product);
-        }
+        openDetail(product);
     }
 
     return (

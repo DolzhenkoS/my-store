@@ -94,7 +94,7 @@ function App() {
         let newProducts = [];
         for (let i = 0; i < products.length; i += 1) {
           newProducts[i] = products[i];
-          if (products[i].article == art) {
+          if (products[i].article === art) {
             newProducts[i].rezerv = Number(newProducts[i].rezerv) + count
           };
         }
@@ -152,7 +152,7 @@ function App() {
     });
   }
 
-  function onDelete(art,name) {
+  function onDelete(art, name) {
     getQuantity(art).then(d => {
       try {
         addQuantity(art, Number(d.quantity), -1, name);
@@ -177,10 +177,16 @@ function App() {
 
   function handleCloseDetail() {
     setSelectedProduct(null);
+    setCurrentPage(LIST_PAGE);
   }
 
   function openDetail(product) {
-    setSelectedProduct(product);
+    if (product === selectedProduct) {
+      setCurrentPage(DETAIL_PAGE)
+    }
+    else {
+      setSelectedProduct(product);
+    }
   }
 
   function onSetFilter(filter) {
@@ -204,8 +210,12 @@ function App() {
         </>
       ) : (currentPage === ORDER_PAGE ? (
         <Order user={user} onDelete={onDelete} onClose={onClose}></Order>
+      ) : (currentPage === DETAIL_PAGE ? (
+        <ProductDetail product={selectedProduct} onClose={handleCloseDetail}></ProductDetail>
       ) : (
         <></>
+      )
+
       )
 
       )}
