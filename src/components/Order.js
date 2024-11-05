@@ -60,7 +60,7 @@ function Order({ user, onDelete, onClose }) {
     function onClickDelete(p) {
         let newOrderInfo = orderInfo;
 
-        if (onDelete(p.article)) {
+        if (onDelete(p.article,p.name)) {
 
             let pcopy = [];
             let len = 0;

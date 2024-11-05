@@ -80,16 +80,26 @@ function App() {
           if (user) { tg.showAlert(data) } else { alert(data) };
         }
 
+      } else {
+        if (data === "ok") {
+          if (user) { tg.showAlert(name + ' удален из заказа') } else { alert(name + ' удален из заказа') };
+
+        } else {
+          if (user) { tg.showAlert(data) } else { alert(data) };
+        }
+
       }
 
-      let newProducts = [];
-      for (let i = 0; i < products.length; i += 1) {
-        newProducts[i] = products[i];
-        if (products[i].article == art) { 
-          newProducts[i].rezerv = Number(newProducts[i].rezerv) + count };
+      if (data === "ok") {
+        let newProducts = [];
+        for (let i = 0; i < products.length; i += 1) {
+          newProducts[i] = products[i];
+          if (products[i].article == art) {
+            newProducts[i].rezerv = Number(newProducts[i].rezerv) + count
+          };
+        }
+        setProducts(newProducts);
       }
-      setProducts(newProducts);
-
     } catch (error) {
       //console.error('Ошибка при получении данных:', error);
     }
@@ -118,7 +128,7 @@ function App() {
   const pushMainButton = () => {
     //alert(currentPage);
     // setFilterProducts(products);
-    setFilter("");
+    //setFilter("");
     switch (currentPage) {
       case LIST_PAGE:
         setCurrentPage(ORDER_PAGE);
@@ -142,10 +152,10 @@ function App() {
     });
   }
 
-  function onDelete(art) {
+  function onDelete(art,name) {
     getQuantity(art).then(d => {
       try {
-        addQuantity(art, Number(d.quantity), -1, "");
+        addQuantity(art, Number(d.quantity), -1, name);
       } catch { return false }
     });
 
