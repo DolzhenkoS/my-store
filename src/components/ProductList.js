@@ -8,7 +8,7 @@ function ProductList({ products, addToCart, openDetail,selectedProduct }) {
 {
     products.map(
         product=>(
-            <Product key={product.id} product={product} addToCart={addToCart} openDetail={openDetail} selectedProduct = {selectedProduct}></Product>
+            <Product key={product.article} product={product} addToCart={addToCart} openDetail={openDetail} selectedProduct = {selectedProduct}></Product>
         )
     )
 }

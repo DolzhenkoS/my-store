@@ -4,7 +4,7 @@ function Footer(){
 return(
     <footer>
         <p>
-            &copy; 2024 Магазин. Все права защищены
+            2025 Розы. Совместная покупка
         </p>
     </footer>
 )

@@ -64,7 +64,7 @@ function App() {
     let id = '1566876383';
     if (user) { id = user.id }
     try {
-      const responce = await fetch("https://ratsberry.sytes.net/api/hs/setOrder.php?id=" + id + "&art=" + art + "&q=" + (q+count), {
+      const responce = await fetch("https://ratsberry.sytes.net/api/hs/setOrder.php?id=" + id + "&art=" + art + "&q=" + (q + count), {
         method: "GET",
         mode: 'cors',
         headers: {
@@ -125,7 +125,8 @@ function App() {
   function addToCart(product) {
     getQuantity(product.article).then(d => {
       try {
-      addQuantity(product.article, Number(d.quantity), 1);} catch {}
+        addQuantity(product.article, Number(d.quantity), 1);
+      } catch { }
     });
     //   addQuantity(product.article,Number(product.quantity),1);
     // let pcopy = [];
@@ -142,12 +143,14 @@ function App() {
 
   function onDelete(art) {
     getQuantity(art).then(d => {
-      try{
-      addQuantity(art, Number(d.quantity), -1);} catch {return false}
+      try {
+        addQuantity(art, Number(d.quantity), -1);
+      } catch { return false }
     });
 
     return true;
   }
+
 
   function removeFromCart(productToRemove) {
     setCart(cart.filter(
@@ -174,6 +177,10 @@ function App() {
     // setFilterProducts(products.filter(function (p) { return p.name.toUpperCase().includes(filter.toUpperCase()) || filter === "" }));
   }
 
+  function onClose(){
+    tg.close();
+  }
+
   return (
     <div className="App">
       {user && <p>Hello, {user.first_name} !</p>}
@@ -185,7 +192,7 @@ function App() {
           <ProductList products={products.filter(function (p) { return p.name.toUpperCase().includes(filter.toUpperCase()) || filter === "" })} addToCart={addToCart} openDetail={openDetail} selectedProduct={selectedProduct}></ProductList>
         </>
       ) : (currentPage === ORDER_PAGE ? (
-        <Order user={user} onDelete={onDelete}></Order>
+        <Order user={user} onDelete={onDelete} onClose={onClose}></Order>
       ) : (
         <></>
       )

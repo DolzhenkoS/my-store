@@ -11,7 +11,7 @@ function Product({ product, addToCart, openDetail, selectedProduct }) {
     }
 
     return (
-        <div className="product">
+        <div key={product.article} className="product" >
             <img onClick={(e) => { onClick(e) }} src={imgUrl} alt={product.name}></img>
             <h2>{product.name}</h2>
             <p>Цена: {product.price} руб</p>
