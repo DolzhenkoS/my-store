@@ -22,6 +22,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [filter, setFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
+  const [scrollPosition,setScrollPosition] = useState(0);
 
   const LIST_PAGE = 0;
   const ORDER_PAGE = 1;
@@ -55,7 +56,15 @@ function App() {
       tg.disableVerticalSwipes();
     }
 
+    
   }, []);
+
+  useEffect(()=>{
+    if (currentPage===0) {
+    if (scrollPosition){
+    window.scrollTo(0, scrollPosition);
+    setScrollPosition(0);}}
+  });
 
 
   //tg.MainButton.setText("Открыть заказ").show().onClick(() => { pushMainButton() })
@@ -132,6 +141,7 @@ function App() {
     switch (currentPage) {
       case LIST_PAGE:
         setCurrentPage(ORDER_PAGE);
+        setScrollPosition(window.scrollY);
         break;
       case ORDER_PAGE:
         setCurrentPage(LIST_PAGE);
@@ -182,6 +192,7 @@ function App() {
 
   function openDetail(product) {
     if (product === selectedProduct) {
+      setScrollPosition(window.scrollY);
       setCurrentPage(DETAIL_PAGE)
     }
     else {
