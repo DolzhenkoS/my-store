@@ -1,4 +1,6 @@
 import React from 'react';
+import '../css/Product.css';
+
 
 function Product({ product, addToCart, openDetail, selectedProduct }) {
     const imgUrl = "https://ratsberry.sytes.net/api/img/img_" + product.article + ".jpg";
@@ -14,8 +16,9 @@ function Product({ product, addToCart, openDetail, selectedProduct }) {
         <div key={product.article} className="product" >
             <img onClick={(e) => { onClick(e) }} src={imgUrl} alt={product.name}></img>
             <h2>{product.name}</h2>
-            <p>Цена: {product.price} руб</p>
+            <p>{product.price} руб</p>
             <button onClick={() => { addToCart(product) }}>Добавить в заказ</button>
+            <div className='icon'>{product.maxq - product.rezerv}</div>
 
         </div>
     )

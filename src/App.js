@@ -73,11 +73,23 @@ function App() {
       });
       const data = await responce.text();
       if (count > 0) {
-        if (data === "ok") { if (user) { tg.showAlert(name + ' добавлен в заказ') } else { alert(name + ' добавлен в заказ') } } else {
+        if (data === "ok") {
+          if (user) { tg.showAlert(name + ' добавлен в заказ') } else { alert(name + ' добавлен в заказ') };
+
+        } else {
           if (user) { tg.showAlert(data) } else { alert(data) };
         }
 
       }
+
+      let newProducts = [];
+      for (let i = 0; i < products.length; i += 1) {
+        newProducts[i] = products[i];
+        if (products[i].article == art) { 
+          newProducts[i].rezerv = Number(newProducts[i].rezerv) + count };
+      }
+      setProducts(newProducts);
+
     } catch (error) {
       //console.error('Ошибка при получении данных:', error);
     }
@@ -128,17 +140,6 @@ function App() {
         addQuantity(product.article, Number(d.quantity), 1, product.name);
       } catch { }
     });
-    //   addQuantity(product.article,Number(product.quantity),1);
-    // let pcopy = [];
-    // for (let i=0; i<products.length; i++){
-    //   pcopy[i] = products[i];
-
-    //   if (products[i].article === product.article) {
-    //     pcopy[i].quantity++;
-    //     pcopy[i].rezerv--;
-    //   }
-    // }
-    // setProducts(pcopy);
   }
 
   function onDelete(art) {
@@ -177,7 +178,7 @@ function App() {
     // setFilterProducts(products.filter(function (p) { return p.name.toUpperCase().includes(filter.toUpperCase()) || filter === "" }));
   }
 
-  function onClose(){
+  function onClose() {
     tg.close();
   }
 
