@@ -60,7 +60,7 @@ function App() {
 
   //tg.MainButton.setText("Открыть заказ").show().onClick(() => { pushMainButton() })
 
-  const addQuantity = async (art, q, count) => {
+  const addQuantity = async (art, q, count, name) => {
     let id = '1566876383';
     if (user) { id = user.id }
     try {
@@ -73,7 +73,7 @@ function App() {
       });
       const data = await responce.text();
       if (count > 0) {
-        if (data === "ok") { if (user) { tg.showAlert('Товар добавлен') } else { alert('Товар добавлен') } } else {
+        if (data === "ok") { if (user) { tg.showAlert(name + ' добавлен в заказ') } else { alert(name + ' добавлен в заказ') } } else {
           if (user) { tg.showAlert(data) } else { alert(data) };
         }
 
@@ -125,7 +125,7 @@ function App() {
   function addToCart(product) {
     getQuantity(product.article).then(d => {
       try {
-        addQuantity(product.article, Number(d.quantity), 1);
+        addQuantity(product.article, Number(d.quantity), 1, product.name);
       } catch { }
     });
     //   addQuantity(product.article,Number(product.quantity),1);
@@ -144,7 +144,7 @@ function App() {
   function onDelete(art) {
     getQuantity(art).then(d => {
       try {
-        addQuantity(art, Number(d.quantity), -1);
+        addQuantity(art, Number(d.quantity), -1, "");
       } catch { return false }
     });
 
@@ -183,7 +183,7 @@ function App() {
 
   return (
     <div className="App">
-      {user && <p>Hello, {user.first_name} !</p>}
+      {user && <div>{user.first_name}+" "+{user.last_name} !</div>}
       {/* <Header></Header> */}
 
       {(currentPage === LIST_PAGE) ? (
