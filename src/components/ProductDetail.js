@@ -1,14 +1,27 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import '../css/ProductDetail.css';
 
 function ProductDetail({product, onClose}){
-    if (!product) return null;
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+      });
 
+      if (!product) return null;
+
+    
     return(
         <div className="product-detail">
             <h2>{product.name}</h2>
+            <img src={"https://ratsberry.sytes.net/api/img/img_"+product.article+".jpg"} alt={product.name}></img>
             <p>{product.description}</p>
-            <p>Цена: {product.price}</p>
-            <button onClick={onClose}>Закрыть</button>
+            <a href={product.url}>Подробнее...</a>
+            <p>Цена: {product.price} руб</p>
+            {(product.quantity)?(
+                <p>Заказано: {product.quantity} шт</p>
+            ):(
+                <p>Нет в заказе</p>
+            )}
+            
 
         </div>
     )

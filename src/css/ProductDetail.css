@@ -1,0 +1,26 @@
+.product-detail {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    
+    img {
+        width: 100%;
+        height: auto;
+        
+        opacity: 0;
+        animation: ani 1.5s forwards;
+        /* transform: translateX(-150%);
+        animation: ani 1s forwards;         */
+    }
+
+}
+  
+@keyframes ani {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+/* @keyframes ani {
+    0% {transform: translateX(-150%);}
+    100% {transform: translateY(0);}
+  } */
