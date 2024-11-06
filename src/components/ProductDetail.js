@@ -13,7 +13,7 @@ function ProductDetail({product, onClose}){
         <div className="product-detail">
             <h2>{product.name}</h2>
             <img src={"https://ratsberry.sytes.net/api/img/img_"+product.article+".jpg"} alt={product.name}></img>
-            <p>{product.description}</p>
+            <p className="deko">{product.description}</p>
             <a href={product.url}>Подробнее...</a>
             <p>Цена: {product.price} руб</p>
             {(product.quantity)?(

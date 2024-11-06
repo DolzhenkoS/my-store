@@ -1,0 +1,19 @@
+header {
+    position: fixed;
+    top: 0;
+    max-width: 800px;
+    width: 100%;
+    /* Шапка займёт всю ширину окна браузера */
+    z-index: 10;
+    /* Высокое значение, чтобы шапка была всегда на первом плане */
+    height: 30px;
+
+    a {
+        color: red;
+        text-decoration: underline;
+    }
+
+    div {
+        font-weight: bold;
+    }
+}

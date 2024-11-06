@@ -209,10 +209,13 @@ function App() {
     tg.close();
   }
 
+  function handleClick(){
+    tg.showAlert("Чтобы оставить номер телефона, нажмите в Телеграм-боте на кнопку 'Отправить телефон для оратной связи'");
+  }
+
   return (
     <div className="App">
-      {user && <div>Заказчик: {user.first_name} {user.last_name}</div>}
-      {/* <Header></Header> */}
+      <Header user={user} handleClick={handleClick}></Header>
 
       {(currentPage === LIST_PAGE) ? (
         <>
