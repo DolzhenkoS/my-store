@@ -48,16 +48,27 @@
     .icon{
         display: inline;
     }
+    .add-button{
+      pointer-events: none;
+      opacity: 0.5;
+      }    
   }
   
   .product h2 {
-    font-size: 0.8em;
-    margin: 0 0 10px;
+    font-size: 0.9em;
+    margin: 0 0 0 0px;
     height: 50px;
   }
-  
+ 
+  .product h3 {
+    font-size: 0.8em;
+    margin: 0 0 0 0px;
+    height: 10px;
+    color: #8f8f8f;
+  }
+ 
   .product p {
     /* display: none; */
-    margin: 0 0 15px;
+    margin-top: 8px;
   }
   
