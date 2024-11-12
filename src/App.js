@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import ProductList from './components/ProductList';
-import Cart from './components/Cart';
-import Checkout from './components/Checkout';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ProductDetail from './components/ProductDetail';
@@ -14,7 +12,6 @@ const tg = window.Telegram.WebApp;
 
 
 function App() {
-  const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
   // const [filterProducts, setFilterProducts] = useState([]);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
@@ -172,18 +169,6 @@ function App() {
     return true;
   }
 
-
-  function removeFromCart(productToRemove) {
-    setCart(cart.filter(
-      product => product.article !== productToRemove.article
-    ));
-  }
-
-  function handleCheckout() {
-    //Очистка корзины после оформления заказа
-    setCart([]);
-    setIsCheckingOut(false);
-  }
 
   function handleCloseDetail() {
     setSelectedProduct(null);

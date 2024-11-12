@@ -110,7 +110,7 @@ function getStatusPay(){
         return("Ждет доплаты " + (orderInfo.summa - orderInfo.pay) + " руб");
 //        pay.style = "color: red;";
     }
-    if (orderInfo.pay == 0) {
+    if (orderInfo.pay === 0) {
         return("Ждет оплаты " + orderInfo.summa + " руб");
 //        pay.style = "color: red;";
     }
@@ -118,7 +118,7 @@ function getStatusPay(){
         return("Переплата " + (orderInfo.pay - orderInfo.summa) + " руб");
 //        pay.style = "color: green;";
     }
-    if (orderInfo.summa == orderInfo.pay) {
+    if (orderInfo.summa === orderInfo.pay) {
         return("Заказ оплачен");
 //        pay.style = "color: green;";
     }

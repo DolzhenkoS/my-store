@@ -1,0 +1,21 @@
+sudo mysql -u root -p
+
+create database roze2025;
+
+create table users(
+    -> id INT AUTO_INCREMENT PRIMARY KEY,
+    -> ident VARCHAR(20),
+    -> first_name VARCHAR(255),
+    -> last_name VARCHAR(255),
+    -> username VARCHAR(255),
+    -> isAdmin BOOLEAN);
+
+create table goods(
+    -> id INT AUTO_INCREMENT PRIMARY KEY,
+    -> name VARCHAR(50),
+    -> description VARCHAR(250),
+    -> url VARCHAR(150),
+    -> price INT);
+
+
+    
